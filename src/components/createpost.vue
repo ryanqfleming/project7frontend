@@ -33,7 +33,6 @@ methods: {
 
   },
   async onSubmit(){
-
     this.message = this.$refs.textUpload.value;
     const formData = new FormData();
     console.log(this.file, 'the fileee')

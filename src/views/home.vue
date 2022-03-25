@@ -21,8 +21,6 @@
 
 <script>
 
-
-
 const ValidateToken = require('../models/validateToken')
 let host = 'http://localhost:3000'
 
@@ -41,7 +39,6 @@ export default {
  })
 
 this.resizeLoader()
-let scroller = false
 window.addEventListener('resize', this.resizeLoader)
 //using lodash to throttle the scroll loader
 window.addEventListener('scroll', _.throttle(this.scrollLoader, 500))
@@ -86,7 +83,7 @@ window.addEventListener('scroll', _.throttle(this.scrollLoader, 500))
             this.viewedScript()
             
         },
-
+        //it loads posts
         postLoader(){
             let fromTop = this.$refs.loadBar.getBoundingClientRect().top;
             if(fromTop < this.$data.viewportHeight*2){
@@ -100,21 +97,14 @@ window.addEventListener('scroll', _.throttle(this.scrollLoader, 500))
         viewedScript(){
             //cleanse it first of viewed items
             this.loadedPosts = this.viewedSplicer(this.loadedPosts)
-            console.log(this.loadedPosts, 'fully loaded')
             for(let i=0; i < this.loadedPosts.length; i++){
-                console.log(this.loadedPosts[i], 'the i')
-                
                 let loadElement = document.getElementById(this.loadedPosts[i].id)
                 let elementView = loadElement.getBoundingClientRect()
-                console.log(this.viewportHeight, 'the view')
                 let container = {
                     post: this.loadedPosts[i].id
                 }
                 let test = JSON.stringify(container)
-                console.log(test, 'the containe')
-                //
                 if(elementView.bottom < this.viewportHeight -(this.viewportHeight / 2) & this.loadedPosts[i].viewed == "false"){
-                    // postView(this.loadedPosts[i].id)
                     const viewRequest ={
                         method: "POST",
                        
@@ -126,12 +116,10 @@ window.addEventListener('scroll', _.throttle(this.scrollLoader, 500))
                     };
                     fetch('http://localhost:3000/view', viewRequest)
                     this.loadedPosts[i].viewed = 'true'
-                    
-
                 }
             }
         },
-
+        //adds the posts to the page
         addPosts(){
             this.currentTier = this.currentTier + 1;
             getPosts(this.currentTier).then(result=>{
@@ -161,17 +149,12 @@ data: function() {
           currentTier:0,
           newPost: '',
           posts: [{user: 'null', img: "", text: "null"}],
-          nothing: '#',
       } 
     },
 }
-
+//pulls posts from backend
 async function getPosts(tier) {
-   
-// console.log(this.currentTier, "current tier")
-    console.log('inside get posts', tier)
     let url = host + '/posts'
-    
     let bodyData = {tier: tier}
     try {
         let res = await fetch(url,{

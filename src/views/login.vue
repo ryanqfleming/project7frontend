@@ -19,7 +19,6 @@ export default {
         }
         
     }) 
-    // this.$router.push('/')
   },
   createAccount() {
       accountControl(false).then(result=>{
@@ -31,11 +30,9 @@ export default {
   }
 }
 }
-
-
 const emailRegex =  /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 const passwordRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
-
+//using the same form for account login and creation
 async function accountControl(type){
 let route = "/login";
     if(type === false){

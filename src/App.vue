@@ -1,15 +1,8 @@
 <script>
-// import Head from './components/head.vue'
-// app.config.globalProperties.msg = 'hello'
 </script>
 
 
 <template>
-  <!-- <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/post">Post</router-link> | 
-    <router-link to="login">Login</router-link>
-  </nav> -->
   <router-view/>
 </template>
 
