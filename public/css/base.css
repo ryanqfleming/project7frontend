@@ -1,0 +1,22 @@
+body {
+    background-color: #f8f9fa !important;
+    background-image: url('../public/icon-left-font.svg')
+}
+.topnav{
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 !important;
+}
+.headLogo {
+    height: 100px;
+    object-fit: cover;
+    flex: 2;
+}
+.headLinks{
+   flex:2;  
+   text-align: right;
+   margin-top: 35px;
+   margin-right: 10px;
+
+}
