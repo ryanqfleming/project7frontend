@@ -3,7 +3,7 @@
 ## Project setup
 ```
 npm install
-add folder public/images
+
 ```
 
 ### Compiles and hot-reloads for development
